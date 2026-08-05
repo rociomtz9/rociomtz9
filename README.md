@@ -1,32 +1,59 @@
 # 👋 Hola, soy Rocío Martínez
 
-Estudiante de Ingeniería en Informática (Paraguay 🇵🇾). 
-No me conformo con que el código "funcione"; me obsesiona que sea seguro, escalable y que resuelva un problema real de un usuario final.
+Estudiante de Ingeniería en Informática (UNCA · Paraguay), especializándome en **seguridad de aplicaciones**.
 
-Mi enfoque combina el desarrollo Full Stack con una mentalidad de arquitectura de software: separación de responsabilidades, seguridad desde el diseño (como RLS en bases de datos) y pruebas automatizadas.
-
----
-
-### 👩‍💻 Lo que estoy construyendo
-
-#### 📱 [vistas-english](https://github.com/rociomtz9/vistas-english)
-*Una PWA educativa que funciona sin internet y sincroniza cuando vuelve.*
-- **El reto:** Generar ejercicios dinámicos y seguros para estudiantes.
-- **La solución:** React + Supabase (PostgreSQL con Row Level Security). Implementé Property-Based Testing para garantizar la integridad de 44 lecciones generadas algorítmicamente.
-- 🌐 [Ver demo en vivo](https://vistas-study-app.vercel.app)
-
-#### 🛠️ [dtc_app](#) *(Repositorio Privado - Demo Disponible)*
-*Herramienta de diagnóstico para técnicos de camiones Scania.*
-- **El reto:** Agilizar la búsqueda de códigos de falla (DTC) en talleres sin conexión estable.
-- **La solución:** App multiplataforma con Flutter (Android, iOS, Web, Desktop) conectada a una base de datos PostgreSQL en la nube, con gestión de roles y permisos estrictos.
-- 🌐 [Ver demo web](https://dtc-diagnostico.netlify.app)
-
-#### 💻 [javicell](#) *(En desarrollo activo)*
-*Sistema de gestión para talleres de microelectrónica.*
-- **El reto:** Digitalizar un negocio real, migrando de procesos manuales a un sistema robusto.
-- **La solución:** Java 21 + PostgreSQL. Estoy aplicando una arquitectura estricta en capas (Model/DAO/Service/UI), manejo de transacciones ACID y automatización de reglas de negocio (cálculo de saldos, estados de reparación).
+No me conformo con que el código "funcione". Me interesa que sea seguro por diseño: qué pasa si el input viene envenenado, quién puede leer esa fila, qué expone el bundle que llega al navegador. Trabajo con separación estricta de responsabilidades, pruebas automatizadas y decisiones documentadas.
 
 ---
 
-### 🛠️ Stack Tecnológico
-`Java 21` `React` `Flutter` `PostgreSQL` `Supabase` `Tailwind CSS` `Git`
+## Proyectos
+
+### [progreso-malla-fcyt](https://github.com/rociomtz9/progreso-malla-fcyt) · [Demo](https://malla-unca.vercel.app)
+
+*Tracker de avance académico que calcula correlatividades y exporta a Excel.*
+
+- **El reto:** que 84 materias con correlatividades encadenadas se resuelvan solas, sin backend y sin que los datos de nadie salgan de su dispositivo.
+- **La solución:** HTML + CSS + JavaScript puro con ES modules. Cero dependencias, cero build, cero servidor. Generación de `.xlsx` con formato condicional y fórmulas, escrita íntegramente en el navegador.
+- **Seguridad:** CSP restrictiva (`default-src 'none'`), HSTS, `frame-ancestors 'none'`, `Permissions-Policy` y construcción del DOM sin `innerHTML` en ningún punto. El progreso vive solo en `localStorage`.
+
+### [vistas-english](https://github.com/rociomtz9/vistas-english) · [Demo](https://vistas-study-app.vercel.app)
+
+*PWA para estudiar inglés, con ejercicios generados algorítmicamente.*
+
+- **El reto:** generar actividades válidas a partir del contenido de cada lección, sin escribir ni una a mano, y garantizar que ninguna quede rota o con la respuesta a la vista.
+- **La solución:** React + Vite + Supabase. Un generador que abre huecos en los diálogos cuidando de no ofrecer sinónimos como distractores, verificado con **property-based testing** (Vitest + PRNG con semilla) sobre decenas de semillas aleatorias.
+- **Offline:** el progreso se guarda al instante en `localStorage` y se sincroniza con Supabase en segundo plano; una cola de pendientes reintenta lo que falle.
+- **Seguridad:** Row Level Security en todas las tablas con políticas por operación (`auth.uid() = user_id`), trigger `security definer` con `search_path` fijado, CSP + HSTS + `X-Frame-Options`, y separación del contenido editorial de terceros del código publicado (el repo trae un set de lecciones de ejemplo propio, con fallo explícito si se pide el contenido real y no está).
+
+### [javicell](https://github.com/rociomtz9/javicell)
+
+*Sistema de gestión de escritorio para un taller de reparación de celulares real.*
+
+- **El reto:** digitalizar un negocio que funcionaba en papel, sin perder trazabilidad de ninguna operación.
+- **La solución:** Java 21 + PostgreSQL 17 con arquitectura estricta en capas (Model / DAO / Service / UI). Transacciones ACID con rollback para operaciones compuestas, soft-delete con auditoría por triggers, y reglas de negocio automatizadas (saldos, estados de reparación, garantías).
+- **Seguridad:** contraseñas con BCrypt, consultas 100 % parametrizadas (sin concatenación de entrada en SQL), credenciales por variables de entorno, y sin usuarios de fábrica: el primer administrador se crea en el arranque con una clave que define el propio usuario.
+
+### dtc_app *(repositorio privado)* · [Demo](https://dtc-diagnostico.netlify.app)
+
+*Herramienta de diagnóstico de códigos de falla (DTC) para técnicos de camiones Scania.*
+
+- **El reto:** buscar códigos de falla en talleres donde la conexión es intermitente.
+- **La solución:** app multiplataforma en Flutter (Android, iOS, Web, Desktop) sobre PostgreSQL en la nube, con un esquema de 15 tablas que modela contexto del vehículo, síntomas, causas y procedimientos, y gestión de roles con permisos estrictos.
+
+---
+
+## Stack
+
+**Lenguajes:** `Java 21` · `JavaScript (ES modules)` · `SQL` · `Dart`
+
+**Frontend:** `React` · `Vite` · `Tailwind CSS` · `PWA / Service Workers` · `Flutter`
+
+**Datos:** `PostgreSQL` · `Supabase (Auth, RLS, Edge Functions)`
+
+**Calidad y seguridad:** `Vitest` · `property-based testing` · `Content Security Policy` · `BCrypt` · `Maven`
+
+---
+
+## Contacto
+
+- Correo: martinezm.rocio2017@gmail.com

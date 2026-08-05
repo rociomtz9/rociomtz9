@@ -1,6 +1,6 @@
 # 👋 Hola, soy Rocío Martínez
 
-Estudiante de Ingeniería en Informática (UNCA · Paraguay), especializándome en **seguridad de aplicaciones**.
+Estudiante de Ingeniería en Informática (UNCA · Paraguay).
 
 No me conformo con que el código "funcione". Me interesa que sea seguro por diseño: qué pasa si el input viene envenenado, quién puede leer esa fila, qué expone el bundle que llega al navegador. Trabajo con separación estricta de responsabilidades, pruebas automatizadas y decisiones documentadas.
 

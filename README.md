@@ -28,13 +28,7 @@ Estudiante de Ingeniería en Informática en la UNCA (Paraguay). Me gusta resolv
 - **El reto:** digitalizar un negocio que funcionaba en papel, sin perder trazabilidad de ninguna operación.
 - **La solución:** Java 21 + PostgreSQL 17 con arquitectura estricta en capas (Model / DAO / Service / UI). Transacciones ACID con rollback para operaciones compuestas, soft-delete con auditoría por triggers, y reglas de negocio automatizadas (saldos, estados de reparación, garantías).
 - **Seguridad:** contraseñas con BCrypt, consultas 100 % parametrizadas (sin concatenación de entrada en SQL), credenciales por variables de entorno, y sin usuarios de fábrica: el primer administrador se crea en el arranque con una clave que define el propio usuario.
-### dtc_app *(repositorio privado)* · [Demo](https://dtc-diagnostico.netlify.app)
- 
-*Herramienta de diagnóstico de códigos de falla (DTC) para técnicos de camiones Scania.*
- 
-- **El reto:** buscar códigos de falla en talleres donde la conexión es intermitente.
-- **La solución:** app multiplataforma en Flutter (Android, iOS, Web, Desktop) sobre PostgreSQL en la nube, con un esquema de 15 tablas que modela contexto del vehículo, síntomas, causas y procedimientos, y gestión de roles con permisos estrictos.
----
+
  
 ## Stack
  
